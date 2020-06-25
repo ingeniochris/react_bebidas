@@ -6,6 +6,7 @@ export const ModalContext = createContext();
 const ModalProvider = (props) => {
 
         const [idreceta, guardarIdReceta]=useState(null);
+        
 
     return(
         <ModalContext.Provider
