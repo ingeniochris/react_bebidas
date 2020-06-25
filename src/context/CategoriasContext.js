@@ -10,7 +10,7 @@ const CategoriasProvider = (props) => {
     
     useEffect(()=>{
         const obtenerCategorias= async _ =>{
-             const url = `https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`
+             const url = `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
              const categorias = await axios.get(url)      
              guardarCategorias(categorias.data.drinks);
         }

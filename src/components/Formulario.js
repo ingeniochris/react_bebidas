@@ -9,12 +9,11 @@ const Formulario = () => {
     const { categorias } = useContext(CategoriasContext);
   
     const [busqueda, guardarBusqueda]= useState({
-        nombre:'',
         categoria:''
     });
     const [error, guardarError]=useState(false);
 
-    const {nombre,categoria}=busqueda
+    const {categoria}=busqueda
     const obtenerDatosReceta = e => {
         guardarBusqueda({
             ...busqueda,
@@ -25,7 +24,7 @@ const Formulario = () => {
     const handleBusqueda = e => {
         e.preventDefault();
 
-        if(nombre.trim()==='' || categoria.trim()===''){
+        if(categoria.trim()===''){
             guardarError(true);
             return;
         }
@@ -42,20 +41,20 @@ const Formulario = () => {
         >
             {error ? <Error message='Todos los campos son necesarios'/> : null}
             <fieldset className="text-center">
-                <legend>Buscar bebidas por Categoria o Ingrediente</legend>
+                <legend>Buscar bebidas por su Ingrediente </legend>
             </fieldset>
             <div className="row">
-                <div className="col-md-4">
+              {/*   <div className="col-md-4">
                     <input 
                     type="text"
                     name="nombre"
                     className="form-control"
-                    placeholder="Buscar por Ingrediente"
+                    placeholder="Licor   ejemplo. Tequila"
                     onChange={obtenerDatosReceta}
                     value={nombre}
                     />
-                </div>
-                <div className="col-md-4">
+                </div>  */}
+                <div className="col-md-6">
                     <select 
                     type="text"
                     name="categoria"
@@ -64,16 +63,16 @@ const Formulario = () => {
                     onChange={obtenerDatosReceta}
                     
                     >
-                        <option value="">-- Seleciona Categoria --</option>
+                        <option value="">-- Seleciona Ingrediente --</option>
                         {categorias.map(categoria => (
                             <option 
-                                key={categoria.strCategory} 
-                                value={categoria.strCategory} 
-                            >{categoria.strCategory}</option>
+                                key={categoria.strIngredient1} 
+                                value={categoria.strIngredient1} 
+                            >{categoria.strIngredient1}</option>
                         ))}
                     </select>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <input 
                     type="submit"
                     className="btn btn-block btn-primary"
